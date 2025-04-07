@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Insights Bot</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Inline CSS for hamburger and menu positioning */
+        .hamburger {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .menu {
+            position: fixed;
+            top: 40px;
+            right: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 1000;
+        }
+        .menu a {
+            display: block;
+            padding: 5px 0;
+            text-decoration: none;
+            color: #333;
+        }
+        /* Ensure responsiveness */
+        @media (max-width: 600px) {
+            .hamburger {
+                font-size: 20px;
+            }
+            .menu {
+                right: 5px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hamburger Menu at Body Level -->
+    <div class="hamburger">☰</div>
+    <div class="menu hidden">
+        <a href="about.html" id="about-dev">About Developer</a>
+        <a href="dashboard.html" id="dashboard">Dashboard</a>
+        <a href="knowmore.html" id="know-more">Know More</a>
+    </div>
+
+    <!-- Front Page -->
+    <div id="front-page" class="front-page">
+        <h1>Investment Insights Bot</h1>
+        <p>Unlock smarter investment decisions</p>
+
+        <!-- Search Box -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search stocks (e.g., AAPL)">
+            <button id="search-btn">Search</button>
+        </div>
+
+        <!-- Trending Stocks -->
+        <div id="trending-stocks" class="trending-container">
+            <h3>Trending Stocks</h3>
+            <div id="trending-list"></div>
+        </div>
+
+        <button class="plan-but" id="start-btn">Plan Investments</button>
+    </div>
+
+    <!-- Main Interface -->
+    <div id="main-interface" class="interface hidden">
+        <h1>Investment Planner</h1>
+        <form id="investment-form">
+            <div class="form-group">
+                <label for="target-amount">Target Amount ($):</label>
+                <input type="number" id="target-amount" min="1000" step="100" placeholder="10000" required>
+            </div>
+            <div class="form-group">
+                <label for="risk-tolerance">Risk Tolerance:</label>
+                <select id="risk-tolerance" required>
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="horizon">Horizon (Years):</label>
+                <input type="number" id="horizon" min="1" max="30" placeholder="5" required>
+            </div>
+            <button type="submit">Get Suggestions</button>
+        </form>
+
+        <div id="loading" class="loading hidden">Analyzing...</div>
+        <div id="results" class="results hidden">
+            <h2>Your Investment Suggestions</h2>
+            <p id="message"></p>
+            <div id="suggestions"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>

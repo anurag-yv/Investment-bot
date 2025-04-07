@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Details - Investment Insights Bot</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="interface">
+        <h1>Stock Details</h1>
+        <div id="stock-details">
+            <h2 id="symbol"></h2>
+            <p>Current Price: <span id="price"></span></p>
+            <p>Volatility: <span id="volatility"></span></p>
+            <p>Recent Change: <span id="change"></span></p>
+            <canvas id="trend-chart"></canvas>
+        </div>
+        <a href="/static/index.html" class="back-btn">Back to Planner</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        window.addEventListener("load", async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const symbol = urlParams.get("symbol");
+
+            try {
+                const response = await fetch(`http://localhost:5000/api/stock/${symbol}`);
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                const data = await response.json();
+
+                document.getElementById("symbol").textContent = data.symbol;
+                document.getElementById("price").textContent = `$${data.price.toFixed(2)}`;
+                document.getElementById("volatility").textContent = data.volatility;
+                document.getElementById("change").textContent = `${data.change.toFixed(2)}%`;
+
+                const ctx = document.getElementById("trend-chart").getContext("2d");
+                new Chart(ctx, {
+                    type: "line",
+                    data: {
+                        labels: data.trend.dates,
+                        datasets: [{
+                            label: `${data.symbol} Price Trend`,
+                            data: data.trend.prices,
+                            borderColor: "#FFD700",
+                            backgroundColor: "rgba(255, 215, 0, 0.2)",
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: { y: { beginAtZero: false } }
+                    }
+                });
+            } catch (error) {
+                document.getElementById("stock-details").innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>

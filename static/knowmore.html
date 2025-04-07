@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know More - Investment Insights Bot</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .hamburger {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .menu {
+            position: fixed;
+            top: 40px;
+            right: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 1000;
+        }
+        .menu a {
+            display: block;
+            padding: 5px 0;
+            text-decoration: none;
+            color: #333;
+        }
+        .page-content {
+            padding: 60px 20px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        p { margin: 15px 0; }
+        @media (max-width: 600px) {
+            .hamburger { font-size: 20px; }
+            .menu { right: 5px; padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="page-content">
+        <h1>Discover the Power of Investment Insights Bot</h1>
+        <p>Curious about what makes our bot tick? Investment Insights Bot is more than just a tool—it’s your personal financial strategist. Powered by cutting-edge artificial intelligence, we analyze vast amounts of market data, from stock trends to economic indicators, to deliver suggestions that match your unique goals.</p>
+        <p>Whether you’re planning for retirement, saving for a big purchase, or diving into the stock market for the first time, our bot adapts to your risk tolerance and time horizon. We don’t just crunch numbers; we translate them into clear, actionable steps you can trust.</p>
+        <p>Built by a team passionate about democratizing finance, this bot combines advanced tech with a human touch. Explore how we can help you navigate the complex world of investing with confidence and clarity. Your financial future is waiting—let’s unlock it together!</p>
+    </div>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.menu');
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Developers - Investment Insights Bot</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .hamburger {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .menu {
+            position: fixed;
+            top: 40px;
+            right: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 1000;
+        }
+        .menu a {
+            display: block;
+            padding: 5px 0;
+            text-decoration: none;
+            color: #333;
+        }
+        .page-content {
+            padding: 60px 20px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .team-photos {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        .team-photos img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #4CAF50;
+        }
+        .team-member {
+            text-align: center;
+        }
+        .team-member h3 {
+            margin: 10px 0 5px;
+            font-size: 18px;
+        }
+        .team-member p {
+            font-size: 14px;
+            color: #666;
+        }
+        @media (max-width: 600px) {
+            .hamburger { font-size: 20px; }
+            .menu { right: 5px; padding: 8px; }
+            .team-photos { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hamburger">☰</div>
+    <div class="menu hidden">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="know-more.html">Know More</a>
+    </div>
+
+    <div class="page-content">
+        <h1>Meet Our Brilliant Developers</h1>
+        <p>We’re a dynamic trio of innovators who brought Investment Insights Bot to life. With a blend of creativity, technical expertise, and a passion for finance, we’re here to empower your investment journey. Get to know the minds behind the magic!</p>
+        <div class="team-photos">
+            <div class="team-member">
+                <img src="https://img.freepik.com/premium-photo/3d-rendering-teenage-boy-hoodie-playing-computer-games_1057-135586.jpg?ga=GA1.1.652749104.1741488056&semt=ais_hybrid&w=740" alt="Developer 1 - Anurag">
+                <h3>Anurag Yadav</h3>
+                <p>AI Specialist & Visionary<br>Anurag crafts the intelligent algorithms that drive our bot, turning data into actionable insights.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://img.freepik.com/premium-photo/cute-little-girl-with-cat-ears-wearing-headphones-is-sitting-computer_734511-33959.jpg?ga=GA1.1.652749104.1741488056&semt=ais_hybrid&w=740" alt="Developer 2 - Khushi">
+                <h3>Khushi Dhir</h3>
+                <p>UI/UX Designer<br>Khushi designs the seamless, user-friendly interfaces that make investing intuitive and enjoyable.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://img.freepik.com/premium-photo/vector-girl-hd-8k-vector-illustration-wallpaper_915071-35987.jpg?ga=GA1.1.652749104.1741488056&semt=ais_hybrid&w=740" alt="Developer 3 - Sonakshi">
+                <h3>Sonakshi Tripathi</h3>
+                <p>Backend Engineer<br>Sonakshi builds the robust systems that keep our bot running smoothly and securely.</p>
+            </div>
+        </div>
+        <p>Together, we combine our diverse skills to create a tool that’s not just smart, but transformative. Let’s build your financial future, one insight at a time!</p>
+    </div>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.menu');
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

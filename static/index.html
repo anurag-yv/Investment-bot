@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Investment Insights Bot</title>
     <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         /* Inline CSS for hamburger and menu positioning */
@@ -43,8 +44,8 @@
         }
     </style>
 </head>
-<body>
-    <!-- Hamburger Menu at Body Level -->
+<body class="bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-500 min-h-screen text-white overflow-x-hidden font-[Poppins]">
+    <!-- Hamburger Menu -->
     <div class="hamburger">☰</div>
     <div class="menu hidden">
         <a href="about.html" id="about-dev">About Developer</a>
@@ -53,57 +54,77 @@
     </div>
 
     <!-- Front Page -->
-    <div id="front-page" class="front-page">
-        <h1>Investment Insights Bot</h1>
-        <p>Unlock smarter investment decisions</p>
+    <div id="front-page" class="flex flex-col items-center justify-center min-h-screen text-center">
+        <h1 class="text-7xl font-bold mb-12">Investment Insights Bot</h1>
+        <p class=" mb-24 text-3xl">Unlock smarter investment decisions</p>
 
         <!-- Search Box -->
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Search stocks (e.g., AAPL)">
-            <button id="search-btn">Search</button>
+        <div class="flex flex-col sm:flex-row gap-2 items-center">
+            <input type="text" id="search-input" placeholder="Search stocks (e.g., AAPL)"
+                   class="px-4 py-2 text-black rounded-md w-64 mb-12 focus:outline-none" />
+            <button id="search-btn" class="bg-white text-black px-4 py-2 rounded-md font-medium mb-12 hover:bg-gray-100">
+                Search
+            </button>
         </div>
 
         <!-- Trending Stocks -->
-        <div id="trending-stocks" class="trending-container">
-            <h3>Trending Stocks</h3>
-            <div id="trending-list"></div>
+        <div id="trending-stocks" class="bg-white text-gray-800 rounded-lg p-4 mt-4 shadow-md max-w-md w-full ">
+            <h3 class="text-xl font-semibold mb-12 flex items-center justify-center">🔥 Trending Stocks</h3>
+            <div id="trending-list" class="space-y-1 text-sm"></div>
         </div>
 
-        <button class="plan-but" id="start-btn">Plan Investments</button>
+        <!-- Plan Button -->
+        <button type="button" id="start-btn"
+                class="mt-4 bg-white text-gray-900 font-semibold px-5 py-2 rounded-lg hover:bg-gray-100 transition">
+            🚀 Plan Investments
+        </button>
     </div>
 
     <!-- Main Interface -->
-    <div id="main-interface" class="interface hidden">
-        <h1>Investment Planner</h1>
-        <form id="investment-form">
-            <div class="form-group">
-                <label for="target-amount">Target Amount ($):</label>
-                <input type="number" id="target-amount" min="1000" step="100" placeholder="10000" required>
-            </div>
-            <div class="form-group">
-                <label for="risk-tolerance">Risk Tolerance:</label>
-                <select id="risk-tolerance" required>
-                    <option value="low">Low</option>
-                    <option value="medium" selected>Medium</option>
-                    <option value="high">High</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="horizon">Horizon (Years):</label>
-                <input type="number" id="horizon" min="1" max="30" placeholder="5" required>
-            </div>
-            <button type="submit">Get Suggestions</button>
+    <div id="main-interface" class="interface bg-white text-gray-800 rounded-xl p-6 shadow-xl max-w-3xl mx-auto mt-10 space-y-6">
+        <h1 class="text-3xl font-bold text-center mb-4">Investment Planner</h1>
+        
+        <form id="investment-form" class="space-y-6">
+          <div>
+            <label for="target-amount" class="block text-lg font-medium mb-1">🎯 Target Amount ($):</label>
+            <input type="number" id="target-amount" min="1000" step="100" placeholder="10000" required
+              class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-black" />
+          </div>
+      
+          <div>
+            <label for="risk-tolerance" class="block text-lg font-medium mb-1">⚖️ Risk Tolerance:</label>
+            <select id="risk-tolerance" required
+              class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-black">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+      
+          <div>
+            <label for="horizon" class="block text-lg font-medium mb-1">📅 Horizon (Years):</label>
+            <input type="number" id="horizon" min="1" max="30" placeholder="5" required
+              class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 text-black" />
+          </div>
+      
+          <button type="submit"
+            class="w-full py-2 text-white font-semibold bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-500 rounded-lg hover:scale-105 transition">
+            💡 Get Suggestions
+          </button>
         </form>
-
-        <div id="loading" class="loading hidden">Analyzing...</div>
-        <div id="results" class="results hidden">
-            <h2>Your Investment Suggestions</h2>
-            <p id="message"></p>
-            <div id="suggestions"></div>
+      
+        <div id="loading" class="loading text-center text-yellow-600 font-medium hidden mt-4">
+          ⏳ Analyzing...
+        </div>
+      
+        <div id="results" class="results hidden mt-6 space-y-3 mb-36">
+          <h2 class="text-2xl font-bold text-center">📊 Your Investment Suggestions</h2>
+          <p id="message" class="text-center text-gray-700"></p>
+          <div id="suggestions" class="text-gray-800 space-y-2 "></div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/static/script.js"></script>
 </body>
+
 </html>

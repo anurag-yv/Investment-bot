@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InvestWise Bot - Register</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+    }
+
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.1) 25%,
+        rgba(37, 99, 235, 0.1) 50%,
+        transparent 75%
+      );
+      background-size: 400% 400%;
+      animation: trendFlow 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes trendFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glow-button {
+      background: linear-gradient(90deg, #3b82f6, #2563eb);
+      box-shadow: 0 0 10px #60a5fa;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glow-button:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px #2563eb;
+    }
+
+    .input-icon {
+      position: relative;
+    }
+
+    .input-icon i {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      padding-top: 2.5%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+    }
+
+    .input-icon input {
+      padding-left: 2.5rem;
+      height: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .input-icon input {
+        padding-left: 2rem;
+      }
+    }
+
+    .carousel-item {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 0.5s ease-in;
+      width: 100%;
+      text-align: center;
+    }
+
+    .carousel-item.active {
+      opacity: 1;
+      position: relative;
+    }
+
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      background-color: #334155;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .carousel-dot.active {
+      background-color: #3b82f6;
+    }
+
+    .fade-slide {
+      animation: fadeSlide 1s ease-out;
+    }
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-start p-4 md:p-6 relative overflow-hidden">
+  <div class="animated-bg"></div>
+
+  <!-- Title -->
+  <section class="text-center mt-2 mb-4 max-w-4xl mx-auto fade-slide">
+    <h1 class="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 mt-3">
+      Join the Smart Investment Revolution
+    </h1>
+    <p class="text-base md:text-lg text-gray-300 mt-2 font-light px-4">
+      InvestWise Bot helps you grow your wealth through intelligent stock analysis and personalized financial guidance.
+    </p>
+  </section>
+
+  <!-- Registration Form -->
+  <section class="w-full max-w-3xl px-4 md:px-0 fade-slide mb-10">
+    <form action="http://localhost/PYTHON1/php/register.php" method="POST" class="grid gap-5 md:grid-cols-1 px-2 md:px-20">
+      <div class="input-icon">
+        <label class="block text-sm font-medium text-gray-300 mb-1">Full Name</label>
+        <input type="text" name="first_name" required class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-600 bg-gray-800 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm transition duration-200">
+        <i class="fas fa-user"></i>
+      </div>
+
+      <div class="input-icon">
+        <label class="block text-sm font-medium text-gray-300 mb-1">Email Address</label>
+        <input type="email" name="email" required class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-600 bg-gray-800 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm transition duration-200">
+        <i class="fas fa-envelope"></i>
+      </div>
+
+      <div class="input-icon">
+        <label class="block text-sm font-medium text-gray-300 mb-1">Create Password</label>
+        <input type="password" name="password" required class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-600 bg-gray-800 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm transition duration-200">
+        <i class="fas fa-lock"></i>
+      </div>
+
+      <button type="submit" class="w-full text-white py-3 rounded-xl font-semibold text-sm glow-button mt-2">
+        Create Account
+      </button>
+    </form>
+
+    <!-- Login Link -->
+    <p class="text-center text-xs mt-4 text-gray-400">
+      Already using InvestWise?
+      <a href="login.html" class="text-blue-400 font-medium hover:underline hover:text-blue-300 transition">Log in</a>
+    </p>
+  </section>
+
+  <!-- Investment Tips Carousel -->
+  <section class="w-full max-w-3xl mx-auto mb-8 px-4">
+    <h3 class="text-xl md:text-2xl font-semibold text-blue-300 text-center mb-4 fade-slide">Smart Investment Tips</h3>
+    <div class="relative bg-gray-800 bg-opacity-80 rounded-2xl p-6 shadow-lg carousel overflow-hidden">
+      <div class="carousel-item active">
+        <p class="tip-text text-gray-300 text-center text-lg italic">Diversify your portfolio to manage risk effectively.</p>
+      </div>
+      <div class="carousel-item">
+        <p class="tip-text text-gray-300 text-center text-lg italic">Invest consistently rather than trying to time the market.</p>
+      </div>
+      <div class="carousel-item">
+        <p class="tip-text text-gray-300 text-center text-lg italic">Understand your risk tolerance before making investments.</p>
+      </div>
+      <div class="flex justify-center gap-3 mt-6">
+        <span class="carousel-dot active" onclick="showSlide(0)"></span>
+        <span class="carousel-dot" onclick="showSlide(1)"></span>
+        <span class="carousel-dot" onclick="showSlide(2)"></span>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function showSlide(index) {
+      const items = document.querySelectorAll('.carousel-item');
+      const dots = document.querySelectorAll('.carousel-dot');
+      items.forEach(item => item.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      items[index].classList.add('active');
+      dots[index].classList.add('active');
+    }
+
+    let currentSlide = 0;
+    const totalSlides = 3;
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }, 5000);
+  </script>
+</body>
+</html>

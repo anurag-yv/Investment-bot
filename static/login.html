@@ -1,0 +1,102 @@
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MindBloom - Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      overflow: hidden;
+    }
+
+    .animated-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(120deg, rgba(0,255,255,0.05), rgba(0,255,127,0.05), rgba(255,255,255,0.02));
+      background-size: 400% 400%;
+      animation: animateBg 25s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes animateBg {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glass-card {
+      backdrop-filter: blur(20px);
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .glass-card:hover {
+      transform: scale(1.02);
+    }
+
+    .glow-button {
+      background: linear-gradient(to right, #14b8a6, #3b82f6);
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 0 10px rgba(20, 184, 166, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    .glow-button:hover {
+      background: linear-gradient(to right, #0ea5e9, #06b6d4);
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.8);
+    }
+
+    ::placeholder {
+      color: #cbd5e1;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex justify-center items-center p-6 relative text-white">
+
+  <div class="animated-background"></div>
+
+  <!-- Login Form Container -->
+  <div class="glass-card rounded-xl p-8 w-full sm:w-96">
+    <h2 class="text-4xl font-bold text-center text-teal-300 mb-6">Investment Bot</h2>
+    <p class="text-center text-base text-slate-300 mb-4">Welcome back! Please login to your account.</p>
+
+    <!-- Login Form -->
+    <form method="POST" action="http://localhost/PYTHON1/php/login.php" class="flex flex-col space-y-6 mt-4">
+
+      <input type="email" name="email" placeholder="Enter your email" required
+        class="w-full px-4 py-3 bg-white/10 text-slate-200 border border-white/20 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:outline-none text-lg">
+
+      <input type="password" name="password" placeholder="Enter your password" required
+        class="w-full px-4 py-3 bg-white/10 text-slate-200 border border-white/20 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:outline-none text-lg">
+
+      <button type="submit" 
+        class="glow-button w-full py-3 rounded-lg text-lg">
+        Login
+      </button>
+
+    </form>
+
+    <!-- Register & Forgot Password Links -->
+    <div class="mt-6 text-center text-sm">
+      <p class="text-slate-300">Don't have an account? 
+        <a href="register.html" class="text-teal-400 font-semibold hover:underline">Sign Up</a>
+      </p>
+      <!-- <p class="text-slate-300 mt-2">
+        <a href="forgot-password.html" class="text-teal-400 font-semibold hover:underline">Forgot Password?</a>
+      </p> -->
+    </div>
+  </div>
+
+</body>
+</html>
